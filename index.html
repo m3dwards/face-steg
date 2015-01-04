@@ -10,6 +10,11 @@
 <body>
 
 <script>
+
+  function logout() {
+    FB.logout(function(response) { });
+  };
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -100,6 +105,8 @@
     
     <div id="status">
     </div>
+    
+    <a href="javascript:void(0)" onclick="logout();"><small>logout</small></a>
     
     <h1>Facebook Steganograhy</h1>
     
