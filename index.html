@@ -92,6 +92,57 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+  
+  function postImageToFB() {  
+  
+    try{
+            blob = dataURItoBlob(imageData,mimeType);
+    }catch(e){console.log(e);}
+    var fd = new FormData();
+    fd.append("access_token",accessToken);
+    fd.append("source", blob);fd.append("message","Kiss");
+    try{
+       $.ajax({
+            url:"https://graph.facebook.com/" + <<userID received on getting user details>> + "/photos?access_token=" + <<user accessToken>>,
+            type:"POST",
+            data:fd,
+            processData:false,
+            contentType:false,
+            cache:false,
+            success:function(data){
+                console.log("success " + data);
+            },
+            error:function(shr,status,data){
+                console.log("error " + data + " Status " + shr.status);
+            },
+            complete:function(){
+                console.log("Ajax Complete");
+            }
+        });
+    
+    }catch(e){console.log(e);}
+  }
+    function dataURItoBlob(dataURI,mime) {
+        // convert base64 to raw binary data held in a string
+        // doesn't handle URLEncoded DataURIs
+    
+        var byteString = window.atob(dataURI);
+    
+        // separate out the mime component
+    
+    
+        // write the bytes of the string to an ArrayBuffer
+        //var ab = new ArrayBuffer(byteString.length);
+        var ia = new Uint8Array(byteString.length);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+    
+        // write the ArrayBuffer to a blob, and you're done
+        var blob = new Blob([ia], { type: mime });
+    
+        return blob;
+    }
 </script>
 
 <!--
