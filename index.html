@@ -101,13 +101,13 @@
 
     try{
       var canvas = document.getElementById('canvas');
-      imageData = canvas.toDataURL();
+      imageData = canvas.toDataURL("image/jpeg", 1.0);
       blob = dataURItoBlob(imageData);
     }catch(e){console.log(e);}
     var fd = new FormData();
     fd.append("access_token", accessToken);
     fd.append("source", blob);
-    fd.append("message","Kiss");
+    fd.append("message","Just a test, move along.");
     try{
        $.ajax({
             url:"https://graph.facebook.com/" + userId + "/photos?access_token=" + accessToken,
