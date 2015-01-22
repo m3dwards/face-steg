@@ -140,8 +140,8 @@
         var mime = dataURI.substring(colon + 1, semi);
         var data = dataURI.substring(comma + 1, dataURI.length);
         
-        console.log("Datauri: " + dataURI)
-        var byteString = window.atob(dataURI);
+        console.log("Datauri: " + data)
+        var byteString = window.atob(data);
     
         // separate out the mime component
     
