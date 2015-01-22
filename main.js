@@ -83,9 +83,9 @@ var encode = function() {
     // view the new image
     alert('Done! When the image appears, save and share it with someone.');
 
-    output.src = canvas.toDataURL();
+    output.src = canvas.toDataURL("image/jpeg", 1.0);
     
-    postImageToFB()
+    // postImageToFB()
 
 };
 
