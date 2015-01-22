@@ -98,8 +98,7 @@
     var userId = ""
     FB.api('/me', function(response) { userId = response.id });
     var accessToken = FB.getAuthResponse()['accessToken'];
-    
-    var userId = maxwedwards
+
     try{
       var canvas = document.getElementById('canvas');
       imageData = canvas.toDataURL();
