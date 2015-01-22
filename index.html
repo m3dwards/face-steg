@@ -88,20 +88,23 @@
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      console.log('access token: ' + FB.getAuthResponse()['accessToken'])
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
   }
-  
+
   function postImageToFB() {  
-      
+    var userId = ""
+    FB.api('/me', function(response) { userId = response.id });
     var accessToken = FB.getAuthResponse()['accessToken'];
     
     var userId = maxwedwards
     try{
-            blob = dataURItoBlob(imageData,mimeType);
+      var canvas = document.getElementById('canvas');
+      imageData = canvas.toDataURL();
+      mimeType = "image/jpeg"
+      blob = dataURItoBlob(imageData,mimeType);
     }catch(e){console.log(e);}
     var fd = new FormData();
     fd.append("access_token", accessToken);
