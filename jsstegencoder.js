@@ -703,7 +703,9 @@ function JPEGEncoder() {
 			}
 
 			//This is where the passed in function gets to fiddle with the coefficients.
-			coefficientModifier(DU_DCT_ARRAY);
+			if (coefficientModifier) {
+				coefficientModifier(DU_DCT_ARRAY);				
+			}
 
 			for (var i = 0; i < j; i++){
 				DCY = processDU(DU_DCT_ARRAY[0][i], DCY, YDC_HT, YAC_HT);
