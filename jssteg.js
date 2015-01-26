@@ -105,7 +105,7 @@ document.getElementById("decode").addEventListener("click", function() {
 
 // Bind the encode button to reading out the coefficients from the image
 document.getElementById("encode").addEventListener("click", function () {
-  jsSteg.reEncodeWithModifications(objectURL, modifyCoefficients, function (resultUri) {
+  jsSteg.reEncodeWithModifications(objectURL, null, function (resultUri) {
     // Do whatever you want with the resulting uri, in this example we display it on the page.
     document.getElementById("output").src = resultUri;
   });
